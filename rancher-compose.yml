@@ -1,0 +1,23 @@
+version: '2'
+services:
+  redis:
+    scale: 3
+    response_timeout: 2000
+      healthy_threshold: 2
+      port: 6379
+      unhealthy_threshold: 3
+      initializing_timeout: 60000
+      interval: 2000
+      strategy: recreate
+      reinitializing_timeout: 60000
+  sentinel:
+    scale: 3
+    health_check:
+      response_timeout: 2000
+      healthy_threshold: 2
+      port: 26379
+      unhealthy_threshold: 3
+      initializing_timeout: 60000
+      interval: 2000
+      strategy: recreate
+      reinitializing_timeout: 60000
