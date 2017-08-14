@@ -2,7 +2,8 @@ version: '2'
 services:
   redis:
     scale: 3
-    response_timeout: 2000
+    health_check:
+      response_timeout: 2000
       healthy_threshold: 2
       port: 6379
       unhealthy_threshold: 3
